@@ -34,9 +34,10 @@ public class World implements GLEventListener {
     public World() {
         // -3, 0, -1
         // -5, 0, -1
-        float[] start = new float[]{-3.0f, 0.0f, -1.0f};
-        float[] end = new float[]{-5.0f, 0.0f, -1.0f};
+        float[] start = new float[]{0.3f, -0.5f, 0.5f};
+        float[] end = new float[]{0.3f, -1f, 0.5f};
         this.line = new Line(start, end);
+        this.line.cube = this.cube;
     }
 
     public void init(GLAutoDrawable gld) {
@@ -104,28 +105,22 @@ public class World implements GLEventListener {
 //        cube.setPosition(xPosition, yPosition, zPosition);
         cube.drawCube(gl);
         //test lines
-        gl.glColor3f(1, 0, 0);
-        gl.glBegin(GL.GL_LINES);
-//        gl.glVertex3f(1f, 1f, 1f);
-        gl.glVertex3f(0.4f, -3f, 0.3f);
-        if (cube.cbc.clip(new Point3D(0.4, -3, 0.3), new Point3D(5, 3.0f, 0))) {
+//        gl.glColor3f(1, 0, 0);
+//        gl.glBegin(GL.GL_LINES);
+//        gl.glVertex3f(0.4f, -3f, 0.3f);
+//        if (cube.cbc.clip(new Point3D(0.4, -3, 0.3), new Point3D(2, 4.0f, 0))) {
 //            gl.glVertex3f((float) cube.cbc.in.px, (float) cube.cbc.in.py, (float) cube.cbc.in.pz);
 //            gl.glColor3f(0, 1, 0);
 //            gl.glVertex3f((float) cube.cbc.in.px, (float) cube.cbc.in.py, (float) cube.cbc.in.pz);
-            gl.glVertex3f((float) cube.cbc.out.px, (float) cube.cbc.out.py, (float) cube.cbc.out.pz);
-            //              gl.glVertex3f((float) cube.cbc.in.px, (float) cube.cbc.in.py, (float) cube.cbc.in.pz);
-//            System.out.println(cube.cbc.in.px + " " + cube.cbc.out.px);
-////            //out line left plane
-            gl.glColor3f(0, 0, 1);
-            gl.glVertex3f((float) cube.cbc.out.px, (float) cube.cbc.out.py, (float) cube.cbc.out.pz);
-            //            gl.glVertex3f(0.5f, -3, 0);
-            gl.glVertex3f(5f, 3.0f, 0f);
 //            gl.glVertex3f((float) cube.cbc.out.px, (float) cube.cbc.out.py, (float) cube.cbc.out.pz);
-        } else {
-            gl.glVertex3f(5f, 3f, -0f);
-//            gl.glVertex3f(0.5f, -3, 0);
-        }
-        gl.glEnd();
+//////            //out line left plane
+//            gl.glColor3f(1, 0, 0);
+//            gl.glVertex3f((float) cube.cbc.out.px, (float) cube.cbc.out.py, (float) cube.cbc.out.pz);
+//            gl.glVertex3f(2f, 4.0f, 0f);
+//        } else {
+//            gl.glVertex3f(2f, 4f, 0f);
+//        }
+//        gl.glEnd();
         //
 
         line.drawLine(gl);

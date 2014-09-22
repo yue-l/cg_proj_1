@@ -26,6 +26,8 @@ public class CyrusBeckClipper {
     // if planes did not give a closed surface
     public boolean clip(Point3D p1, Point3D p2) {
         Vector3D v = p2.subtract(p1); // direction vector for line
+        
+        
         double tIn = Double.NEGATIVE_INFINITY;
         double tOut = Double.POSITIVE_INFINITY;
         // iterate through each plane in turn

@@ -243,13 +243,13 @@ public class Cube {
         ArrayList<Plane> planes = new ArrayList<Plane>();
         //set planes
         //point 2 2 0
-        Plane topPlane = new Plane(new Point3D(2, 2, 0), new Vector3D(2, 3, 0));
-        Plane leftPlane = new Plane(new Point3D(2, 2, 0), new Vector3D(3, 2, 0));
-        Plane backPlane = new Plane(new Point3D(2, 2, 0), new Vector3D(2, 2, -1));
+        Plane topPlane = new Plane(new Point3D(2, 2, 0), new Vector3D(0, 1, 0));
+        Plane leftPlane = new Plane(new Point3D(2, 2, 0), new Vector3D(1, 0, 0));
+        Plane backPlane = new Plane(new Point3D(2, 2, 0), new Vector3D(0, 0, -1));
         //point 0 0 2
-        Plane bottomPlane = new Plane(new Point3D(0, 0, 2), new Vector3D(0, -1, 2));
-        Plane rightPlane = new Plane(new Point3D(0, 0, 2), new Vector3D(-1, 0, 2));
-        Plane frontPlane = new Plane(new Point3D(0, 0, 2), new Vector3D(0, 0, 3));
+        Plane bottomPlane = new Plane(new Point3D(0, 0, 2), new Vector3D(0, -1, 0));
+        Plane rightPlane = new Plane(new Point3D(0, 0, 2), new Vector3D(-1, 0, 0));
+        Plane frontPlane = new Plane(new Point3D(0, 0, 2), new Vector3D(0, 0, 1));
         planes.add(topPlane);
         planes.add(leftPlane);
         planes.add(backPlane);
