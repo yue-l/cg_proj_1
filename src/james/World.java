@@ -34,8 +34,8 @@ public class World implements GLEventListener {
     public World() {
         // -3, 0, -1
         // -5, 0, -1
-        float[] start = new float[]{0.3f, -0.5f, 0.5f};
-        float[] end = new float[]{0.3f, -1f, 0.5f};
+        float[] start = new float[]{1f, -2.5f, 1.7f};
+        float[] end = new float[]{1f, -6f, 1.2f};
         this.line = new Line(start, end);
         this.line.cube = this.cube;
     }

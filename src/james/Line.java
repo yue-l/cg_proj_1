@@ -37,36 +37,51 @@ public class Line {
     }
 
     public void drawLine(GL gl) {
-        gl.glColor3f(1, 0, 0);
         gl.glBegin(GL.GL_LINES);
-        gl.glVertex3f(startPts[0], startPts[1], startPts[2]);
         if (cube.cbc.clip(new Point3D(startPts[0], startPts[1], startPts[2]), new Point3D(endPts[0], endPts[1], endPts[2]))) {
-            if (cube.cbc.in != null) {
-                gl.glVertex3f((float) cube.cbc.in.px, (float) cube.cbc.in.py, (float) cube.cbc.in.pz);
-            } //            else {
-            //                gl.glVertex3f(startPts[0], startPts[1], startPts[2]);
-            //            }
-            else if (cube.cbc.in != null) {
-                gl.glColor3f(0, 1, 0);
-                gl.glVertex3f((float) cube.cbc.in.px, (float) cube.cbc.in.py, (float) cube.cbc.in.pz);
-            } else {
+            if (cube.cbc.out != null && cube.cbc.in != null && endPts[1] > (float) cube.cbc.in.py) {
+                gl.glColor3f(1, 0, 0);
+                gl.glVertex3f(endPts[0], endPts[1], endPts[2]);
                 gl.glVertex3f(startPts[0], startPts[1], startPts[2]);
-            }
-            if (cube.cbc.out != null && this.endPts[1] < 2) {
+            } else if (cube.cbc.out != null && cube.cbc.in != null && endPts[1] > (float) cube.cbc.out.py) {
+                gl.glColor3f(0, 1, 0);
+                gl.glVertex3f(endPts[0], endPts[1], endPts[2]);
+                gl.glVertex3f((float) cube.cbc.in.px, (float) cube.cbc.in.py, (float) cube.cbc.in.pz);
+                gl.glColor3f(1, 0, 0);
+                gl.glVertex3f((float) cube.cbc.in.px, (float) cube.cbc.in.py, (float) cube.cbc.in.pz);
+                gl.glVertex3f(startPts[0], startPts[1], startPts[2]);
+            } else if (cube.cbc.out != null && cube.cbc.in != null) {
+                gl.glColor3f(1, 0, 0);
+                gl.glVertex3f(startPts[0], startPts[1], startPts[2]);
+                gl.glVertex3f((float) cube.cbc.in.px, (float) cube.cbc.in.py, (float) cube.cbc.in.pz);
+
+                gl.glColor3f(0, 1, 0);
+                gl.glVertex3f((float) cube.cbc.out.px, (float) cube.cbc.out.py, (float) cube.cbc.out.pz);
+                gl.glVertex3f((float) cube.cbc.in.px, (float) cube.cbc.in.py, (float) cube.cbc.in.pz);
+
                 gl.glColor3f(1, 0, 0);
                 gl.glVertex3f((float) cube.cbc.out.px, (float) cube.cbc.out.py, (float) cube.cbc.out.pz);
-            } //            else {
-            //                gl.glVertex3f(endPts[0], endPts[1], endPts[2]);
-            //            }
-            else if (cube.cbc.out != null) {
-//                gl.glColor3f(0, 1, 0);
-                gl.glVertex3f((float) cube.cbc.out.px, (float) cube.cbc.out.py, (float) cube.cbc.out.pz);
-            } else {
                 gl.glVertex3f(endPts[0], endPts[1], endPts[2]);
+
+            } else if (cube.cbc.out != null && (float) cube.cbc.out.py < startPts[1]) {
+                gl.glColor3f(0, 1, 0);
+                gl.glVertex3f((float) cube.cbc.out.px, (float) cube.cbc.out.py, (float) cube.cbc.out.pz);
+                gl.glVertex3f(startPts[0], startPts[1], startPts[2]);
+                gl.glColor3f(1, 0, 0);
+                gl.glVertex3f(startPts[0], startPts[1], startPts[2]);
+                gl.glVertex3f(endPts[0], endPts[1], endPts[2]);
+            } else if (cube.cbc.out != null) {
+                gl.glColor3f(1, 0, 0);
+                gl.glVertex3f(endPts[0], endPts[1], endPts[2]);
+                gl.glVertex3f(startPts[0], startPts[1], startPts[2]);
+            } else if (cube.cbc.in != null) {
+                gl.glColor3f(0, 1, 0);
+                gl.glVertex3f((float) cube.cbc.in.px, (float) cube.cbc.in.py, (float) cube.cbc.in.pz);
+                gl.glVertex3f(endPts[0], endPts[1], endPts[2]);
+                gl.glColor3f(1, 0, 0);
+                gl.glVertex3f((float) cube.cbc.in.px, (float) cube.cbc.in.py, (float) cube.cbc.in.pz);
+                gl.glVertex3f(startPts[0], startPts[1], startPts[2]);
             }
-            gl.glVertex3f(endPts[0], endPts[1], endPts[2]);
-        } else {
-            gl.glVertex3f(endPts[0], endPts[1], endPts[2]);
         }
         gl.glEnd();
     }
@@ -79,7 +94,7 @@ public class Line {
     }
 
     public void updateVector() {
-        vec = new float[]{(endPts[0] - startPts[0]) / 10f, Math.abs((endPts[1] - startPts[1]) / 10f), (endPts[2] - startPts[2]) / 10f};
+        vec = new float[]{(endPts[0] - startPts[0]) / 10f, Math.abs((endPts[1] - startPts[1]) / 500f), (endPts[2] - startPts[2]) / 10f};
     }
 
 }
