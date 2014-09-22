@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package james;
+package project_1;
 
 import javax.media.opengl.GL;
 import school_res.Point3D;

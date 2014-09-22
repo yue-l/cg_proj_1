@@ -1,4 +1,4 @@
-package james;
+package project_1;
 
 /**
  *
@@ -10,7 +10,6 @@ package james;
 import javax.media.opengl.*;
 import com.sun.opengl.util.Animator;
 import javax.media.opengl.glu.GLU;
-import school_res.Point3D;
 
 public class World implements GLEventListener {
 
@@ -32,8 +31,6 @@ public class World implements GLEventListener {
     private Line line;
 
     public World() {
-        // -3, 0, -1
-        // -5, 0, -1
         float[] start = new float[]{1f, -2.5f, 1.7f};
         float[] end = new float[]{1f, -6f, 1.2f};
         this.line = new Line(start, end);
@@ -95,34 +92,8 @@ public class World implements GLEventListener {
         gl.glEnd();
 
         //draw cube
-//        float xPosition = 2.5f;
-//        float yPosition = 1 + eyeY * 0.1f;
-//        float zPosition = 2.5f;
-//        float rotX = -eyeX * .001f;
-//        float rotY = 0f;
-//        float rotZ = -eyeZ * .001f;
-//        cube.rotate(rotX, rotY, rotZ);
-//        cube.setPosition(xPosition, yPosition, zPosition);
         cube.drawCube(gl);
         //test lines
-//        gl.glColor3f(1, 0, 0);
-//        gl.glBegin(GL.GL_LINES);
-//        gl.glVertex3f(0.4f, -3f, 0.3f);
-//        if (cube.cbc.clip(new Point3D(0.4, -3, 0.3), new Point3D(2, 4.0f, 0))) {
-//            gl.glVertex3f((float) cube.cbc.in.px, (float) cube.cbc.in.py, (float) cube.cbc.in.pz);
-//            gl.glColor3f(0, 1, 0);
-//            gl.glVertex3f((float) cube.cbc.in.px, (float) cube.cbc.in.py, (float) cube.cbc.in.pz);
-//            gl.glVertex3f((float) cube.cbc.out.px, (float) cube.cbc.out.py, (float) cube.cbc.out.pz);
-//////            //out line left plane
-//            gl.glColor3f(1, 0, 0);
-//            gl.glVertex3f((float) cube.cbc.out.px, (float) cube.cbc.out.py, (float) cube.cbc.out.pz);
-//            gl.glVertex3f(2f, 4.0f, 0f);
-//        } else {
-//            gl.glVertex3f(2f, 4f, 0f);
-//        }
-//        gl.glEnd();
-        //
-
         line.drawLine(gl);
         line.moveLine(gl);
         gl.glFlush();

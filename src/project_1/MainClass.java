@@ -1,4 +1,4 @@
-package james;
+package project_1;
 
 import javax.media.opengl.*;
 import java.awt.*;
@@ -11,6 +11,7 @@ import java.awt.event.*;
  * @author James Gilliland ID:1311022
  * 
  * @version 17-09-14 modified by Yue: the Cyrus Beck algorithm is missing
+ * @version 22-09-14 modified by Yue: Cyrus Beck algorithm complete
  */
 public class MainClass {
 
